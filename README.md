@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="./gatsby-dev.png" height="150px" />
-  </a>
+<img alt="Gatsby" src="./gatsby-dev.png" height="150px" />
 </p>
 <h1 align="center">
   Gatsby Source Dev.to
