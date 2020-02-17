@@ -1,0 +1,17 @@
+.post {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 20px;
+}
+.post h2 {
+    font-size: 20px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+.post .extra {
+    padding: 4px;
+}
+.post .extra p {
+    margin: 0;
+}

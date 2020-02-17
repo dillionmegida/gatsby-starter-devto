@@ -1,21 +1,51 @@
 import React from "react"
-import { Link } from "gatsby"
+import Styles from '../styles/index.module.css';
 
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = ({data}) => {
+  const { edges } = data.allDevNode;
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <h1>DEV Posts</h1>
+      <div>
+        {edges.map(({ node }) => {
+          const { frontmatter } = node;
+          const { title, description, publish_date } = frontmatter;
+          return (
+            <article key={node.id } className={Styles.post}>
+              <h2>{title}</h2>
+              <p>{description}</p>
+              <div className={Styles.extra}>
+                <p>{publish_date}</p>
+
+              </div>
+            </article>
+          )
+        })}
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    allDevNode {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            description
+            publish_date
+          }
+        }
+      }
+    }
+  }
+`
